@@ -4,7 +4,7 @@ This module is used only by an external ASGI application server like `uvicorn` t
 service, including any setup like logging etc. that needs to be completed before the service is
 ready to accept requests.
 
-    `uvicorn sapien.entrypoints.asgi:app --host 0.0.0.0 --port 8080 --reload`
+    `uvicorn sapien.entrypoints.asgi:app --reload`
 
 """
 
