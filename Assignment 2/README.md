@@ -1,1 +1,1 @@
-# RI-template
+# PRI-template
