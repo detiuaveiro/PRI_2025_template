@@ -1,4 +1,4 @@
-# RI 2024 Practical classes
+# PRI 2025 Practical classes
 
 ## Teachers
 - José Luís Oliveira - jlo@ua.pt
