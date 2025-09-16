@@ -8,13 +8,9 @@ ready to accept requests.
 
 """
 
-import logging
-
+from sapien.core.logging import setup_logging
 from sapien.entrypoints.api.app import app
 
 __all__ = ["app"]
 
-logging.basicConfig(
-    level=logging.DEBUG,
-    format="%(asctime)s %(levelname)s %(name)s - %(message)s",
-)
+setup_logging()

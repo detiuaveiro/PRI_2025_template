@@ -1,11 +1,13 @@
 """Heterogenous memory monitor for Python. It should work in all OS."""
+import logging
 import os
-import sys
 import threading
 import time
 from dataclasses import dataclass
 
 import psutil
+
+logger = logging.getLogger(__name__)
 
 
 @dataclass
@@ -28,10 +30,10 @@ def start_memory_monitor(show_memory_updates: bool = False):
     monitor_thread = threading.Thread(
         target=memory_monitor_worker, args=(memory_config,), daemon=True
     )
-    monitor_thread.start()
-    print(
+    logger.info(
         f"[MemoryGuard] Monitoring started. Crashing if usage exceeds {memory_config.limit_mb} MB."
     )
+    monitor_thread.start()
 
 
 def memory_monitor_worker(memory_config: MemoryMonitorConfig):
@@ -50,14 +52,12 @@ def memory_monitor_worker(memory_config: MemoryMonitorConfig):
             rss_memory_mb = rss_memory_bytes / (1024 * 1024)
 
             if memory_config.memory_updates:
-                # You can uncomment the line below for verbose, real-time memory logging
                 print(f"\r[MemoryGuard] Current usage: {rss_memory_mb:.2f} MB", end="")
 
             if rss_memory_mb > memory_config.limit_mb:
-                print(
+                logger.error(
                     f"\n\n[MemoryGuard] CRITICAL: Memory usage ({rss_memory_mb:.2f} MB) exceeded"
-                    f" the limit of {memory_config.limit_mb} MB. Terminating program.",
-                    file=sys.stderr,
+                    f" the limit of {memory_config.limit_mb} MB. Terminating program."
                 )
 
                 # Use os._exit(1) for an immediate, forceful exit.
@@ -68,7 +68,7 @@ def memory_monitor_worker(memory_config: MemoryMonitorConfig):
             # The process might have already exited, so we can stop the thread.
             break
         except Exception as e:
-            print(f"\n[MemoryGuard] Error in memory monitor: {e}", file=sys.stderr)
+            logger.error(f"\n[MemoryGuard] Error in memory monitor: {e}")
             break
 
         time.sleep(memory_config.interval_sec)
