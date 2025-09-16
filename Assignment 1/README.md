@@ -69,8 +69,8 @@ uv run cli [arguments]
 uv run src/sapien/entrypoints/cli [arguments]
 ```
 
-**Note**: The CLI automatically starts memory monitoring. This needs to be included as
-part of the assignment. Each group must be able to develop an indexer with memory constraints.
+**Note**: The CLI automatically starts memory monitoring, which must be included as part of the assignment.
+Each group must be able to develop an indexer with memory constraints.
 
 ## Development Best Practices
 
