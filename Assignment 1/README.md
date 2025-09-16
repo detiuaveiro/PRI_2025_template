@@ -6,7 +6,6 @@ This project implements a search engine called "Sapien" with both a REST API for
 
 ## Prerequisites
 
-- Python 3.13 or higher
 - uv (install from https://docs.astral.sh/uv/getting-started/installation/)
 
 ## Setup
