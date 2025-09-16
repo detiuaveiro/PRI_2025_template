@@ -56,7 +56,7 @@ def memory_monitor_worker(memory_config: MemoryMonitorConfig):
             if rss_memory_mb > memory_config.limit_mb:
                 print(
                     f"\n\n[MemoryGuard] CRITICAL: Memory usage ({rss_memory_mb:.2f} MB) exceeded"
-                    " the limit of {memory_config.limit_mb} MB. Terminating program.",
+                    f" the limit of {memory_config.limit_mb} MB. Terminating program.",
                     file=sys.stderr,
                 )
 

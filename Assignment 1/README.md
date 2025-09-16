@@ -65,7 +65,7 @@ The CLI indexer runs with memory monitoring enabled to enforce the 2GB memory li
 ```bash
 uv run cli [arguments]
 ```
-
+OR
 ```bash
 uv run src/sapien/entrypoints/cli [arguments]
 ```
