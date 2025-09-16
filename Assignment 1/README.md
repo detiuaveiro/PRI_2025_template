@@ -39,6 +39,7 @@ src/sapien/
 │   │       └── healthcheck.py # Health check endpoint
 │   ├── cli.py            # Command-line indexer interface
 │   └── asgi.py           # ASGI server entry point
+static_pages/             # static webpage that interacts with your search engine via REST
 ```
 
 ### Key Entrypoints:
@@ -54,11 +55,16 @@ Start the FastAPI server:
 ```bash
 uv run uvicorn sapien.entrypoints.asgi:app --reload
 ```
+- **Static Web Interface**: `http://localhost:8000`
 - **API docs**: `http://localhost:8000/docs`
 
 ### Running the CLI Indexer
 
 The CLI indexer runs with memory monitoring enabled to enforce the 2GB memory limit:
+```bash
+uv run cli [arguments]
+```
+
 ```bash
 uv run src/sapien/entrypoints/cli [arguments]
 ```
