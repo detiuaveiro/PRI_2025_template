@@ -4,24 +4,21 @@ This project implements a search engine called "Sapien" with both a REST API for
 
 ## Prerequisites
 
-- Python 3.12 or higher
-- Poetry (install from https://python-poetry.org/docs/#installation)
+- Python 3.13 or higher
+- uv (install from https://docs.astral.sh/uv/getting-started/installation/)
 
 ## Setup
 
 1. Install dependencies:
    ```bash
-   poetry install
+   uv sync
    ```
 
-2. Activate the environment:
-   ```bash
-   source $(poetry env info --path)/bin/activate
-   ```
+2. You don't need to activate the environment manually. Just let `uv` handle the activation automatically by prefixing your commands with `uv run`.
 
 3. Install pre-commit hooks (runs linting on every commit):
    ```bash
-   poetry run pre-commit install
+   uv run pre-commit install
    ```
 
 ## Project Organization
@@ -55,7 +52,7 @@ src/sapien/
 
 Start the FastAPI server:
 ```bash
-poetry run uvicorn sapien.entrypoints.asgi:app --reload
+uv run uvicorn sapien.entrypoints.asgi:app --reload
 ```
 - **API docs**: `http://localhost:8000/docs`
 
@@ -63,7 +60,7 @@ poetry run uvicorn sapien.entrypoints.asgi:app --reload
 
 The CLI indexer runs with memory monitoring enabled to enforce the 2GB memory limit:
 ```bash
-poetry run python -m sapien.entrypoints.cli [arguments]
+uv run src/sapien/entrypoints/cli [arguments]
 ```
 
 **Note**: The CLI automatically starts memory monitoring. This needs to be included as
