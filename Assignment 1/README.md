@@ -1,4 +1,6 @@
-# Sapien - Search Engine Project
+# "Sapien" - Search Engine Project
+
+IMPORTANT: Each group should pick a name for its project. "sapien" is just a template.
 
 This project implements a search engine called "Sapien" with both a REST API for searching and a CLI interface for indexing. It's built with strict typing, linting, and memory constraints to ensure high-quality, efficient code.
 
